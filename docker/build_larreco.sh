@@ -1,16 +1,7 @@
 #!/bin/bash
 set -e # script must exit if an error occurs
 
-# Set compiler flags
-if [ "$COMPILER " = "g++ " ]
-then
-    export CXX="g++"
-    export CC="gcc"
-elif [ "$COMPILER " = "clang " ]
-then
-    export CXX="clang++"
-    export CC="clang"
-fi
+source /pandora/set_compiler_flags.sh
 
 # Build project
 mkdir build
