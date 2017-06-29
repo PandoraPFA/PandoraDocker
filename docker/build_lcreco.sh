@@ -7,5 +7,13 @@ source /pandora/set_compiler_flags.sh
 mkdir build
 cd build
 cmake -DCMAKE_MODULE_PATH=/pandora/PandoraPFA/cmakemodules -DPANDORA_MONITORING=ON -DPandoraSDK_DIR=/pandora/PandoraSDK -DPandoraMonitoring_DIR=/pandora/PandoraMonitoring -DLCContent_DIR=/pandora/LCContent ..
-make -j2 install
+
+if [[ "$1" == "coverity" ]]; then
+    source /pandora/prepend_coverity_path.sh
+    cov-build --dir cov-int make -j2
+    tar czvf coverity_build.tgz cov-int
+else
+    make -j2 install
+fi
+
 cd /pandora
