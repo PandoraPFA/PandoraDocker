@@ -16,6 +16,6 @@ else
     make -j2 install
 fi
 
-cd .. && rm -rf build
+cd ..
 
 cd /pandora
