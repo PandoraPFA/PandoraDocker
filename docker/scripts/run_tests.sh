@@ -24,26 +24,24 @@ sed -i "s/<SvmFileName>.*<\/SvmFileName>/<SvmFileName>${alteredSvmPath}<\/SvmFil
 sed -i "s/<SvmFileName>.*<\/SvmFileName>/<SvmFileName>${alteredSvmPath}<\/SvmFileName>/g" ${cosmicSettingsFile}
 sed -i "s/<SvmFileName>.*<\/SvmFileName>/<SvmFileName>${alteredSvmPath}<\/SvmFileName>/g" ${cheatSettingsFile}
 
-# Run nu samples with neutrino and cheat scripts.
+# Run nu samples with neutrino script.
 for f in /pandora/data/samples/nu/*.pndr
 do
+    echo $f
     alteredSamplePath="$(echo $f | sed -e 's/[\/&]/\\&/g')"
 
     sed -i "s/<EventFileName>.*<\/EventFileName>/<EventFileName>${alteredSamplePath}<\/EventFileName>/g" ${nuSettingsFile}
-    sed -i "s/<EventFileName>.*<\/EventFileName>/<EventFileName>${alteredSamplePath}<\/EventFileName>/g" ${cheatSettingsFile}
-
-    /pandora/LArReco/bin/PandoraInterface -i $nuSettingsFile -d /pandora/LArReco/detectors/uboone.xml -N -n1000
-    /pandora/LArReco/bin/PandoraInterface -i $cheatSettingsFile -d /pandora/LArReco/detectors/uboone.xml -N -n1000
+    /pandora/LArReco/bin/PandoraInterface -i $nuSettingsFile -d /pandora/LArReco/detectors/uboone.xml -n 20 > /dev/null
 done
 
 # Run cosmic samples with cosmic and cheat scripts.
 for f in /pandora/data/samples/cosmic/*.pndr
 do
+    echo $f
     alteredSamplePath="$(echo $f | sed -e 's/[\/&]/\\&/g')"
 
     sed -i "s/<EventFileName>.*<\/EventFileName>/<EventFileName>${alteredSamplePath}<\/EventFileName>/g" ${cosmicSettingsFile}
     sed -i "s/<EventFileName>.*<\/EventFileName>/<EventFileName>${alteredSamplePath}<\/EventFileName>/g" ${cheatSettingsFile}
-
-    /pandora/LArReco/bin/PandoraInterface -i $cosmicSettingsFile -d /pandora/LArReco/detectors/uboone.xml -N -n1000
-    /pandora/LArReco/bin/PandoraInterface -i $cheatSettingsFile -d /pandora/LArReco/detectors/uboone.xml -N -n1000
+    /pandora/LArReco/bin/PandoraInterface -i $cosmicSettingsFile -d /pandora/LArReco/detectors/uboone.xml -n 20 > /dev/null
+    /pandora/LArReco/bin/PandoraInterface -i $cheatSettingsFile -d /pandora/LArReco/detectors/uboone.xml -n 20 > /dev/null
 done
