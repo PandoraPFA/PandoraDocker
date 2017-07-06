@@ -13,4 +13,8 @@ RUN tar -xf 3.3.3.tar.gz && rm 3.3.3.tar.gz && mv eigen-eigen-67e894c6cd8f Eigen
 RUN cd Eigen3 && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/pandora/Eigen3 .. && make -j$(nproc) install
 
 WORKDIR /pandora
+
+RUN apt-get -y install lcov curl
+
+ADD ./data /pandora/data
 ADD ./scripts /pandora
