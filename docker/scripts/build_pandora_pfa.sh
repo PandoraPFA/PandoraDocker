@@ -16,6 +16,4 @@ else
     make -j2 install
 fi
 
-cd ..
-
 cd /pandora
