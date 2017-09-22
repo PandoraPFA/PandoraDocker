@@ -1,6 +1,7 @@
 #/bin/bash
 settingsFile=/pandora/LArReco/settings/uboone/PandoraSettings_MicroBooNE.xml
 cheatSettingsFile=/pandora/LArReco/settings/development/PandoraSettings_Cheat.xml
+geometryFile=/pandora/LArReco/geometry/uboone.xml
 
 # Disable monitoring.
 sed -i "s/<IsMonitoringEnabled>.*<\/IsMonitoringEnabled>/<IsMonitoringEnabled>false<\/IsMonitoringEnabled>/g" ${settingsFile}
@@ -16,13 +17,13 @@ sed -i "s/<SvmFileName>.*<\/SvmFileName>/<SvmFileName>${alteredSvmPath}<\/SvmFil
 for f in /pandora/data/samples/nu/*.pndr
 do
     echo $f
-    /pandora/LArReco/bin/PandoraInterface -r AllHitsNu -i $settingsFile -e $f -v /pandora/LArReco/volumes/uboone.xml -g /pandora/data/Geometry_MicroBooNE.pndr > /dev/null
+    /pandora/LArReco/bin/PandoraInterface -r AllHitsNu -i $settingsFile -e $f -g $geometryFile > /dev/null
 done
 
 # Run cosmic samples with cosmic and cheat scripts.
 for f in /pandora/data/samples/cosmic/*.pndr
 do
     echo $f
-    /pandora/LArReco/bin/PandoraInterface -r Full -i $settingsFile -e $f -v /pandora/LArReco/volumes/uboone.xml -g /pandora/data/Geometry_MicroBooNE.pndr > /dev/null
-    /pandora/LArReco/bin/PandoraInterface -r Full -i $cheatSettingsFile -e $f -v /pandora/LArReco/volumes/uboone.xml -g /pandora/data/Geometry_MicroBooNE.pndr > /dev/null
+    /pandora/LArReco/bin/PandoraInterface -r Full -i $settingsFile -e $f -g $geometryFile > /dev/null
+    /pandora/LArReco/bin/PandoraInterface -r Full -i $cheatSettingsFile -e $f -g $geometryFile > /dev/null
 done
