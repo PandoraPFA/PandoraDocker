@@ -6,7 +6,7 @@ then
 elif [ "$COMPILER " = "clang-8 " ]
 then
    export CXX="clang-8"
-   export CC="clang"
+   export CC="clang-8"
 elif [ "$COMPILER " = "g++ " ]
 then
     export CXX="g++"
