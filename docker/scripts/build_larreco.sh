@@ -8,9 +8,9 @@ mkdir build
 cd build
 
 if [[ "$1" ==  "coverage" ]]; then
-    cmake -DCMAKE_MODULE_PATH=/pandora/PandoraPFA/cmakemodules -DPANDORA_MONITORING=ON -DPandoraSDK_DIR=/pandora/PandoraSDK -DPandoraMonitoring_DIR=/pandora/PandoraMonitoring -DLArContent_DIR=/pandora/LArContent -DCMAKE_CXX_FLAGS=--coverage ..
+    cmake -DCMAKE_MODULE_PATH=/pandora/PandoraPFA/cmakemodules -DROOT_DIR=/pandora/root/cmake -DPANDORA_MONITORING=ON -DPandoraSDK_DIR=/pandora/PandoraSDK -DPandoraMonitoring_DIR=/pandora/PandoraMonitoring -DLArContent_DIR=/pandora/LArContent -DCMAKE_CXX_FLAGS=--coverage ..
 else
-    cmake -DCMAKE_MODULE_PATH=/pandora/PandoraPFA/cmakemodules -DPANDORA_MONITORING=ON -DPandoraSDK_DIR=/pandora/PandoraSDK -DPandoraMonitoring_DIR=/pandora/PandoraMonitoring -DLArContent_DIR=/pandora/LArContent ..
+    cmake -DCMAKE_MODULE_PATH=/pandora/PandoraPFA/cmakemodules -DROOT_DIR=/pandora/root/cmake -DPANDORA_MONITORING=ON -DPandoraSDK_DIR=/pandora/PandoraSDK -DPandoraMonitoring_DIR=/pandora/PandoraMonitoring -DLArContent_DIR=/pandora/LArContent ..
 fi
 
 if [[ "$1" == "coverity" ]]; then
