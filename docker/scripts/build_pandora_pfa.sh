@@ -6,10 +6,10 @@ source /pandora/set_compiler_flags.sh
 # Build project
 mkdir build
 cd build
-cmake -DROOT_DIR=/pandora/root/cmake -DPANDORA_MONITORING=ON -DPANDORA_EXAMPLE_CONTENT=ON -DPANDORA_LAR_CONTENT=ON -DPANDORA_LC_CONTENT=ON ..
+cmake -DROOT_DIR=/pandora/root/cmake -DPANDORA_MONITORING=ON -DPANDORA_EXAMPLE_CONTENT=ON -DPANDORA_LAR_CONTENT=ON -DPANDORA_LC_CONTENT=ON -DCMAKE_CXX_FLAGS=-std=c++17 ..
 
 if [[ "$1" == "coverity" ]]; then
-    source /pandora/prepend_coverity_path.sh
+    source /pandora/prepend_coverity_path.sh -fPIC
     cov-build --dir cov-int make -j2
     tar czvf coverity_build.tgz cov-int
 else

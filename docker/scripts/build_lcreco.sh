@@ -6,7 +6,7 @@ source /pandora/set_compiler_flags.sh
 # Build project
 mkdir build
 cd build
-cmake -DCMAKE_MODULE_PATH=/pandora/PandoraPFA/cmakemodules -DPANDORA_MONITORING=ON -DPandoraSDK_DIR=/pandora/PandoraSDK -DPandoraMonitoring_DIR=/pandora/PandoraMonitoring -DLCContent_DIR=/pandora/LCContent ..
+cmake -DCMAKE_MODULE_PATH=/pandora/PandoraPFA/cmakemodules -DPANDORA_MONITORING=ON -DPandoraSDK_DIR=/pandora/PandoraSDK -DPandoraMonitoring_DIR=/pandora/PandoraMonitoring -DLCContent_DIR=/pandora/LCContent -DCMAKE_CXX_FLAGS=-std=c++17 ..
 
 if [[ "$1" == "coverity" ]]; then
     source /pandora/prepend_coverity_path.sh

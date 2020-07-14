@@ -9,7 +9,7 @@ cd build
 cmake -DCMAKE_MODULE_PATH=/pandora/PandoraPFA/cmakemodules -DROOT_DIR=/pandora/root/cmake -DPandoraSDK_DIR=/pandora/PandoraSDK ..
 
 if [[ "$1" == "coverity" ]]; then
-    source /pandora/prepend_coverity_path.sh
+    source /pandora/prepend_coverity_path.sh -fPIC
     cov-build --dir cov-int make -j2
     tar czvf coverity_build.tgz cov-int
 else
