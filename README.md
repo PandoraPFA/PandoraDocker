@@ -52,6 +52,6 @@ To push the container to Docker
 
 ```
 docker login
-docker tag pandorapfa_c17 pandorapfa/pandorapfa_c17
+docker tag pandorapfa pandorapfa/pandorapfa_c17
 docker push pandorapfa/pandorapfa_c17
 ```
