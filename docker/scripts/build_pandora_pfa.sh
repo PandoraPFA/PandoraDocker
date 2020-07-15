@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e # script must exit if an error occurs
 
+source /pandora/root/bin/thisroot.sh
 source /pandora/set_compiler_flags.sh
 
 # Build project
